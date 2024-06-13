@@ -8,7 +8,7 @@ import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import Fade from '@mui/material/Fade';
-import logo_grocery from '../../assets/logo_grocery.png';
+import logo_grocery from '../../assets/grocery_logo.png';
 import { Button, Container, Drawer, IconButton, List, ListItem, ListItemButton, ListItemText, Tooltip, useMediaQuery } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -227,7 +227,7 @@ const Navbar = (props) => {
                                 <div className='flex w-full justify-between items-center'>
                                     {/* Brand_icon */}
                                     <Link to={'/home'}>
-                                        <img className='sm:max-h-6 max-h-5 my-auto cursor-pointer'
+                                        <img className='sm:max-h-15 max-h-10 my-auto cursor-pointer'
                                             src={logo_grocery}
                                             alt="grocery" />
                                     </Link>
