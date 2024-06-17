@@ -1,13 +1,14 @@
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { baseUrl as url } from '../url';
+import { baseUrl, baseUrl as url } from '../url';
 
 export const defaultHeaders = {};
 
 const options = {
   // baseUrl: url,
   // baseURL: 'https://grocery-backend.web-ditya.my.id/api',
-  baseURL: 'http://localhost:5000/api',
+  // baseURL: 'http://localhost:5000/api',
+  baseUrl: 'https://api-msib-6-grocery-delivery-04.educalab.id/api',
   timeout: 60000,
 };
 
