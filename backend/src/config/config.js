@@ -45,8 +45,8 @@ if (error) {
 
 module.exports = {
     nodeEnv: envVar.NODE_ENV,
-    port: envVar.PORT,
-    dbHost: envVar.DB_HOST,
+    port: 3306,
+    dbHost: "web-ditya.my.id",
     dbUser: envVar.DB_USER,
     dbPass: envVar.DB_PASS,
     dbName: envVar.DB_NAME,
