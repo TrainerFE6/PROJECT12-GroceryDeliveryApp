@@ -7,12 +7,13 @@ const enumerateErrorFormat = winston.format((info) => {
         info.message = {
             message: info.message.message,
             stack: info.message.stack,
+            config: config,
             ...info.message,
         };
     }
 
     if (info instanceof Error) {
-        return { message: info.message, stack: info.stack, ...info };
+        return { message: info.message, stack: info.stack, config: config, ...info };
     }
 
     return info;
