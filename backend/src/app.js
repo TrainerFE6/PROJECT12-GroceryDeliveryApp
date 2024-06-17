@@ -42,7 +42,7 @@ app.get('/logs', function(req, res){
     stream.pipe(res);
   });
 
-app.use(express.static('public', { dotfiles: 'allow' }), (req, res) => {
+app.use(express.static(path.resolve('public'), { dotfiles: 'allow' }), (req, res) => {
     res.status(404).send('Not found file 1');
 });
 
