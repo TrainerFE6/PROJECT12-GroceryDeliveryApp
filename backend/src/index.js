@@ -13,7 +13,7 @@ const io = require('socket.io')(server, { cors: { origin: '*' } });
 global.io = io;
 require('./config/rootSocket')(io);
 
-server.listen(config.port, () => {
+server.listen(4461, () => {
     console.log('SERVER');
     console.log(`Listening to port ${config.port}`);
 });
