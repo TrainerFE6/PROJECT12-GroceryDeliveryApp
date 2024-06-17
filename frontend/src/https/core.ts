@@ -12,6 +12,8 @@ const options = {
   timeout: 60000,
 };
 
+console.log('options', options);
+
 export interface PaginationParams {
   page: number;
   perPage: number;
@@ -77,13 +79,14 @@ const errorInterceptor = (error: any) => {
 const instance: AxiosInstance = axios.create(options);
 
 instance.defaults.headers.common = defaultHeaders;
-
+console.log(instance);
 // Add interceptor to add token from localStorage
 instance.interceptors.request.use((config) => {
   const token = localStorage.getItem('token');
   if (token) {
     config.headers['Authorization'] = `Bearer ${token}`;
   }
+  config.baseURL = 'https://api-msib-6-grocery-delivery-04.educalab.id/api'; // Set the base URL here
   return config;
 });
 

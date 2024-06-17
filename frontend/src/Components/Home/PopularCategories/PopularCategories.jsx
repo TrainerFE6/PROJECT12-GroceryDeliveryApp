@@ -66,7 +66,8 @@ const Categories = () => {
 
     const fetchData = async () => {
         try {
-          const res = await instance.get('categories/landing/list');
+        console.log('get categories')
+          const res = await instance.get('/categories/landing/list');
           setData(res.data.map((category) => {
             return {
                 id: category.id,
