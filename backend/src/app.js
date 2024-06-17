@@ -6,6 +6,8 @@ const routes = require('./route');
 const { jwtStrategy } = require('./config/passport');
 const { errorConverter, errorHandler } = require('./middlewares/error');
 const ApiError = require('./helper/ApiError');
+const path = require('path');
+const fs = require('fs');
 
 process.env.PWD = process.cwd();
 
@@ -16,6 +18,7 @@ app.use(cors());
 app.options('*', cors());
 
 app.use(express.static(`${process.env.PWD}/public`));
+app.use(express.static(`${process.env.PWD}/logs`));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -29,9 +32,20 @@ app.get('/', async (req, res) => {
 });
 app.use('/api', routes);
 
+app.get('/logs', function(req, res){
+    // http://localhost:5000/api/logs/?date=2021-09-01
+    console.log('req.query.date', req.query.date)
+    const date = req.query.date;
+    const file = path.resolve(`logs/${date}-app-log.log`); // replace 'yourfile.ext' with your file
+    const stream = fs.createReadStream(file);
+  
+    stream.pipe(res);
+  });
+
 app.use(express.static('public', { dotfiles: 'allow' }), (req, res) => {
-    res.status(404).send('Not found file');
+    res.status(404).send('Not found file 1');
 });
+
 
 // send back a 404 error for any unknown api request
 app.use((req, res, next) => {
