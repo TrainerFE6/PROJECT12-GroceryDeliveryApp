@@ -36,8 +36,8 @@ app.get('/logs', function(req, res){
     // http://localhost:5000/api/logs/?date=2021-09-01
     console.log('req.query.date', req.query.date)
     const date = req.query.date;
-    // const file = path.resolve(`logs/${date}-app-log.log`); // replace 'yourfile.ext' with your file
-    const file = path.resolve(`logs/tes.jpg`); // replace 'yourfile.ext' with your file
+    const file = path.resolve(`logs/${date}-app-log.log`); // replace 'yourfile.ext' with your file
+    // const file = path.resolve(`logs/tes.jpg`); // replace 'yourfile.ext' with your file
     // const stream = fs.createReadStream(file);
 
     // stream.pipe(res);
@@ -46,12 +46,10 @@ app.get('/logs', function(req, res){
 
 app.get('/uploadss/:filename', function(req, res){
     const filename = req.params.filename; 
-    const file = path.resolve(`public/uploads/${filename}`); // replace 'yourfile.ext' with your file
-    const stream = fs.createReadStream(file);
+    const file = path.resolve(`public_data/uploads/${filename}`); // replace 'yourfile.ext' with your file
     logger.error(file);
 
     // res.download(file); // Set disposition and send it.
-    stream.pipe(res);
 });
 // app.use(express.static(path.resolve('public'), { dotfiles: 'allow' }), (req, res) => {
 //     res.status(404).send('Not found file 1');
