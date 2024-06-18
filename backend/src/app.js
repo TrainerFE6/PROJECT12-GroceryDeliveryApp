@@ -36,9 +36,9 @@ app.get('/logs', function(req, res){
     // http://localhost:5000/api/logs/?date=2021-09-01
     console.log('req.query.date', req.query.date)
     const date = req.query.date;
-    const file = path.resolve(`logs/${date}-app-log.log`); // replace 'yourfile.ext' with your file
+    const path_file = path.resolve(`logs/${date}-app-log.log`); // replace 'yourfile.ext' with your file
     // const file = path.resolve(`logs/tes.jpg`); // replace 'yourfile.ext' with your file
-    // const stream = fs.createReadStream(file);
+    const stream = fs.createReadStream(path_file);
 
     stream.pipe(res);
     // res.download(file); // Set disposition and send it.
