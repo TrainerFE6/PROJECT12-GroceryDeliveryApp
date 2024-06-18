@@ -17,5 +17,5 @@ require('./config/rootSocket')(io);
 const port = 4461;
 server.listen(port, () => {
     console.log('SERVER');
-    console.log(`Listening to port ${config.port}`);
+    console.log(`Listening to port ${port}`);
 });

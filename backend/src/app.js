@@ -42,10 +42,17 @@ app.get('/logs', function(req, res){
     stream.pipe(res);
   });
 
+app.get('/uploads/:filename', function(req, res){
+    const filename = req.params.filename; 
+    const file = path.resolve(`public/uploads/${filename}`); // replace 'yourfile.ext' with your file
+    const stream = fs.createReadStream(file);
+
+    res.download(file); // Set disposition and send it.
+});
 // app.use(express.static(path.resolve('public'), { dotfiles: 'allow' }), (req, res) => {
 //     res.status(404).send('Not found file 1');
 // });
-app.use(express.static(path.join(__dirname, '/public')));
+// app.use(express.static(path.join(__dirname, '/public')));
 
 
 // send back a 404 error for any unknown api request

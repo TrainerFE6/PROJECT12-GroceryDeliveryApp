@@ -7,6 +7,9 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 
 library.add(fas)
 
+
+import { GlobalDebug } from "./remove-console";
+
 import Loader from './common/Loader';
 import PageTitle from './componentsBackoffice/PageTitle';
 import SignIn from './pages/Authentication/SignIn';
@@ -40,6 +43,7 @@ function App() {
   }, [pathname]);
 
   useEffect(() => {
+    GlobalDebug(false);
     setTimeout(() => setLoading(false), 1000);
   }, []);
 
