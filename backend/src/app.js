@@ -42,12 +42,14 @@ app.get('/logs', function(req, res){
     stream.pipe(res);
   });
 
-app.get('/uploads/:filename', function(req, res){
+app.get('/uploadss/:filename', function(req, res){
     const filename = req.params.filename; 
     const file = path.resolve(`public/uploads/${filename}`); // replace 'yourfile.ext' with your file
     const stream = fs.createReadStream(file);
+    logger.error(file);
 
-    res.download(file); // Set disposition and send it.
+    // res.download(file); // Set disposition and send it.
+    stream.pipe(res);
 });
 // app.use(express.static(path.resolve('public'), { dotfiles: 'allow' }), (req, res) => {
 //     res.status(404).send('Not found file 1');
@@ -66,6 +68,7 @@ app.use(errorConverter);
 // handle error
 app.use(errorHandler);
 const db = require('./models');
+const logger = require('./config/logger');
 
 // Uncomment this line if you want to sync database model
 // db.sequelize.sync()
