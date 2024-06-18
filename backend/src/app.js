@@ -40,16 +40,16 @@ app.get('/logs', function(req, res){
     // const file = path.resolve(`logs/tes.jpg`); // replace 'yourfile.ext' with your file
     // const stream = fs.createReadStream(file);
 
-    // stream.pipe(res);
-    res.download(file); // Set disposition and send it.
+    stream.pipe(res);
+    // res.download(file); // Set disposition and send it.
   });
 
-app.get('/uploadss/:filename', function(req, res){
-    const filename = req.params.filename; 
-    const file = path.resolve(`public_data/uploads/${filename}`); // replace 'yourfile.ext' with your file
-    logger.error(file);
+app.get('/get_file', function(req, res){
+    const file = req.query.file; 
+    const path_file = path.resolve(`public/${file}`); // replace 'yourfile.ext' with your file
+    logger.error(path_file);
 
-    // res.download(file); // Set disposition and send it.
+    res.download(path_file); // Set disposition and send it.
 });
 // app.use(express.static(path.resolve('public'), { dotfiles: 'allow' }), (req, res) => {
 //     res.status(404).send('Not found file 1');
