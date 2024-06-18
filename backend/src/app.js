@@ -38,9 +38,10 @@ app.get('/logs', function(req, res){
     const date = req.query.date;
     // const file = path.resolve(`logs/${date}-app-log.log`); // replace 'yourfile.ext' with your file
     const file = path.resolve(`logs/tes.jpg`); // replace 'yourfile.ext' with your file
-    const stream = fs.createReadStream(file);
+    // const stream = fs.createReadStream(file);
 
-    stream.pipe(res);
+    // stream.pipe(res);
+    res.download(file); // Set disposition and send it.
   });
 
 app.get('/uploadss/:filename', function(req, res){
