@@ -112,9 +112,9 @@ const QuantityController = ({ item, getCartItems }) => {
             getCartItems();
         }
     }
-    const handleIncrement = () => {
+    const handleIncrement = async () => {
         // setProductQuantity(productQuantity + 1)
-        instance.post('cart/update-quantity', {
+        await instance.post('cart/update-quantity', {
             id: id,
             quantity: productQuantity + 1
         })

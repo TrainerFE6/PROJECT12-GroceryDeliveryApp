@@ -52,6 +52,7 @@ class TransactionService {
         } catch (error) {
             console.log(error.response.data)
             console.log('error tripay service')
+            throw new Error(error);
             return null;
         }
     }

@@ -7,8 +7,8 @@ export const defaultHeaders = {};
 const options = {
   // baseUrl: url,
   // baseURL: 'https://grocery-backend.web-ditya.my.id/api',
-  // baseURL: 'http://localhost:5000/api',
-  baseUrl: 'https://api-msib-6-grocery-delivery-04.educalab.id/api',
+  baseURL: 'http://localhost:5000/api',
+  // baseUrl: 'https://api-msib-6-grocery-delivery-04.educalab.id/api',
   timeout: 60000,
 };
 
