@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import CartItemCard from '../CartItemCard/CartItemCard';
 import { groceryContext } from '../../Layout/Layout';
 
-const CartItems = ({ cartItems }) => {
+const CartItems = ({ cartItems, getCartItems }) => {
     // Get Cart Items from Context
     // const { cartItemsState } = useContext(groceryContext);
     // const [cartItems, setCartItems] = cartItemsState;
@@ -21,7 +21,8 @@ const CartItems = ({ cartItems }) => {
                 {cartItems?.map(cartItem => (
                     <CartItemCard
                         item={cartItem}
-                        key={cartItem.id} />
+                        key={cartItem.id}
+                        getCartItems={getCartItems} />
                 ))}
 
             </div>

@@ -70,7 +70,7 @@ const Transaction = () => {
       label: "Detail",
       color: "bg-warning",
       onClick: (row) => {
-        console.log("Gambar", row);
+        // console.log("Gambar", row);
         navigate(`/dashboard/detail/${row.id}`);
       },
     },
@@ -96,7 +96,7 @@ const Transaction = () => {
     if (data.length === 0) {
       fetchData()
     }
-  });
+  }, []);
 
   return (
     <div className="flex flex-col gap-10" style={{ width: '100vh' }}>

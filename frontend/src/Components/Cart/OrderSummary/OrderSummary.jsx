@@ -92,7 +92,7 @@ const OrderSummary = ({cartItems,shipping = {},payment = {}}) => {
 
     useEffect(() => {
         calculateTotal();
-    }, [shipping, payment]);
+    }, [shipping, payment, cartItems]);
 
     return (
         <div className='flex justify-center md:pt-16 col md:col-span-4 lg:col-span-1'>

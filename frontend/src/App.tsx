@@ -97,7 +97,7 @@ function App() {
           path="/backoffice"
           element={
             <>
-              <PageTitle title="eCommerce Dashboard | Grocery - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eCommerce Grocery" />
               <ECommerce />
             </>
           }
@@ -164,7 +164,7 @@ function App() {
           path="/login"
           element={
             <>
-              <PageTitle title="Signin | Grocery - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eCommerce Grocery" />
               <SignIn />
             </>
           }
@@ -173,7 +173,7 @@ function App() {
           path="/register"
           element={
             <>
-              <PageTitle title="Signup | Grocery - Tailwind CSS Admin Dashboard Template" />
+              <PageTitle title="eCommerce Grocery" />
               <SignUp />
             </>
           }

@@ -8,8 +8,7 @@ import PopUpDialog from '../../PopUpDialog/PopUpDialog';
 import { asset } from '../../../url';
 import instance from '../../../https/core';
 
-const CartItemCard = ({ item }) => {
-    console.log(item)
+const CartItemCard = ({ item, getCartItems }) => {
 
     const { id, Product, quantity, price, subtotal } = item;
     const activeImage = Product.ProductImages?.length > 0 ? asset(Product.ProductImages[0].path) : '';
@@ -20,20 +19,24 @@ const CartItemCard = ({ item }) => {
     const { cartItemsState } = useContext(groceryContext);
     const [cartItems, setCartItems] = cartItemsState;
 
-    const [openDialog, setOpenDialog] = useState(false);
+    const [openDialog, setOpenDialog] = useState(0);
 
     // Remove Item Handler
-    const handleRemoveItem = () => {
-        const trimmedCart = cartItems.filter(item => item.id !== id)
-        setCartItems(trimmedCart)
-        handleSessionStorage('set', 'cartItems', trimmedCart)
+    const handleRemoveItem = async () => {
+        // const trimmedCart = cartItems.filter(item => item.id !== id)
+        // setCartItems(trimmedCart)
+        // handleSessionStorage('set', 'cartItems', trimmedCart)
+        // item.id = 0;
+        await instance.post('cart/delete', { id: id });
+
+        getCartItems();
         setOpenDialog(!openDialog)
     }
 
     return (
         <>
             <PopUpDialog
-                open={openDialog }
+                open={openDialog !== 0}
                 handleRemove={handleRemoveItem}
                 handleCancel={()=> setOpenDialog(!openDialog)}
                 message={'Ingin menghapus barang ini?'} />
@@ -81,7 +84,7 @@ const CartItemCard = ({ item }) => {
                     {/* Item Quantity Control */}
                     <div className='flex items-center justify-center xl:col-span-1 col-span-2'>
                         <QuantityController
-                            item={item} />
+                            item={item} getCartItems={getCartItems} />
                     </div>
                 </div>
             </Fade></>
@@ -89,7 +92,7 @@ const CartItemCard = ({ item }) => {
 };
 
 // Quantity Controller
-const QuantityController = ({ item }) => {
+const QuantityController = ({ item, getCartItems }) => {
     const { quantity, price, id } = item;
     const [productQuantity, setProductQuantity] = useState(quantity);
 
@@ -106,6 +109,7 @@ const QuantityController = ({ item }) => {
                 quantity: productQuantity - 1
             })
             setProductQuantity(productQuantity - 1)
+            getCartItems();
         }
     }
     const handleIncrement = () => {
@@ -115,6 +119,7 @@ const QuantityController = ({ item }) => {
             quantity: productQuantity + 1
         })
         setProductQuantity(productQuantity + 1)
+        getCartItems();
     }
 
     // Update Cart

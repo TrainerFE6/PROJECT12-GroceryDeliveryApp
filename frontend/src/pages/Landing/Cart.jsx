@@ -43,6 +43,10 @@ const Cart = () => {
         getCartItems();
     }, []);
 
+    useEffect(() => {
+        console.log('Cart Items Changed', cartItems)
+    }, [cartItems])
+
     return (
         <checkoutContext.Provider value={[isProceedToCheckout, setIsProceedToCheckout]}>
             <section className={`${cartItems.length > 0 ? 'min-h-screen ' : 'h-screen '}pt-20 pb-10`}>
@@ -51,7 +55,7 @@ const Cart = () => {
                         <section className="grid lg:gap-x-0 gap-x-5 gap-y-8 w-full xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-12 ">
                             <div className='col xl:col-span-2 lg:col-span-1 md:col-span-8'>
                                 {!isProceedToCheckout ?
-                                    <CartItems cartItems={cartItems} />
+                                    <CartItems cartItems={cartItems} getCartItems={getCartItems} />
                                     : <DeliveryForm setShipping={setShipping} setPayment={setPayment} />
                                 }
                             </div>

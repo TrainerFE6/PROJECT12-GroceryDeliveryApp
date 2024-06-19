@@ -108,10 +108,10 @@ const Profile = () => {
       if (user) {
         
         fetchProvince().then((res) => {
-          console.log('after tes');
+          // console.log('after tes');
           setValue('province_id', user.province_id)
           fetchCity(user.province_id).then(() => {
-            console.log('after tes2')
+            // console.log('after tes2')
             setValue('city_id', user.city_id)
             
             const tes = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : {};
